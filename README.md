@@ -3,7 +3,7 @@
 
 
 ## Description
-<p align="center"> 
+<p > 
  This project implements a linear regression model to predict temperature based on various environmental variables. It leverages the scikit-learn library in Python to train the model and evaluate its performance on unseen data.
 </p>
 
