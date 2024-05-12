@@ -41,7 +41,6 @@ file_menu.add_command(label="Exit", command=root.quit)
 help_menu = Menu(menu, tearoff=0)
 menu.add_cascade(label="Help", menu=help_menu)
 help_menu.add_command(label="About", command=about)
-
 text = Text(root, wrap="word", undo=True)
 text.pack(expand=True, fill="both")
 
@@ -49,5 +48,4 @@ scrollbar = Scrollbar(text)
 scrollbar.pack(side="right", fill="y")
 scrollbar.config(command=text.yview)
 text.config(yscrollcommand=scrollbar.set)
-
 root.mainloop()

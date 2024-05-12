@@ -1,37 +1,49 @@
 from tkinter import *
+from tkinter import ttk
+from tkinter import messagebox
+
+def add_task():
+    task = task_entry.get()
+    if task:
+        tasks_listbox.insert(END, task)
+        task_entry.delete(0, END)
+    else:
+        messagebox.showwarning("Warning", "Task cannot be empty!")
+
+def remove_task():
+    try:
+        index = tasks_listbox.curselection()[0]
+        tasks_listbox.delete(index)
+    except IndexError:
+        pass
+
+def clear_tasks():
+    tasks_listbox.delete(0, END)
+
+def on_closing():
+    if messagebox.askokcancel("Quit", "Do you want to quit?"):
+        root.destroy()
 
 root = Tk()
-root.geometry("500x600")
-root.title("User Profile")
+root.title("To-Do List")
 
-# User Details
-name_label = Label(root, text="Name:", font=("Arial", 12))
-name_label.place(x=50, y=50)
-name_entry = Entry(root, width=30)
-name_entry.place(x=150, y=50)
+style = ttk.Style()
+style.configure("TButton", padding=6, relief="flat")
 
-age_label = Label(root, text="Age:", font=("Arial", 12))
-age_label.place(x=50, y=100)
-age_entry = Entry(root, width=10)
-age_entry.place(x=150, y=100)
+task_entry = ttk.Entry(root, width=40)
+task_entry.pack(pady=10)
 
-email_label = Label(root, text="Email:", font=("Arial", 12))
-email_label.place(x=50, y=150)
-email_entry = Entry(root, width=30)
-email_entry.place(x=150, y=150)
+add_button = ttk.Button(root, text="Add Task", command=add_task)
+add_button.pack(pady=5)
 
-# Profile Display
-def display_profile():
-    name = name_entry.get()
-    age = age_entry.get()
-    email = email_entry.get()
+remove_button = ttk.Button(root, text="Remove Task", command=remove_task)
+remove_button.pack(pady=5)
 
-    profile_label.config(text=f"Name: {name}\nAge: {age}\nEmail: {email}")
+clear_button = ttk.Button(root, text="Clear All Tasks", command=clear_tasks)
+clear_button.pack(pady=5)
 
-display_button = Button(root, text="Display Profile", command=display_profile)
-display_button.place(x=200, y=200)
+tasks_listbox = Listbox(root, width=50)
+tasks_listbox.pack(padx=10, pady=10)
 
-profile_label = Label(root, text="", font=("Arial", 12), justify=LEFT)
-profile_label.place(x=50, y=250)
-
+root.protocol("WM_DELETE_WINDOW", on_closing)  # call on_closing when window is closed
 root.mainloop()
