@@ -22,7 +22,7 @@ def save_file():
         root.title(os.path.basename(file_path) + " - Text Editor")
 
 def about():
-    messagebox.showinfo("About", "This is a simple text editor created using Tkinter.")
+    messagebox.showinfo("About", "This is a  text editor created using Tkinter.")
 
 root = Tk()
 root.title("Untitled - Text Editor")
