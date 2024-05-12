@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import ttk
 from tkinter import messagebox
 
 def add_task():
@@ -22,16 +23,19 @@ def clear_tasks():
 root = Tk()
 root.title("To-Do List")
 
-task_entry = Entry(root, width=40)
+style = ttk.Style()
+style.configure("TButton", padding=6, relief="flat")
+
+task_entry = ttk.Entry(root, width=40)
 task_entry.pack(pady=10)
 
-add_button = Button(root, text="Add Task", command=add_task)
+add_button = ttk.Button(root, text="Add Task", command=add_task)
 add_button.pack(pady=5)
 
-remove_button = Button(root, text="Remove Task", command=remove_task)
+remove_button = ttk.Button(root, text="Remove Task", command=remove_task)
 remove_button.pack(pady=5)
 
-clear_button = Button(root, text="Clear All Tasks", command=clear_tasks)
+clear_button = ttk.Button(root, text="Clear All Tasks", command=clear_tasks)
 clear_button.pack(pady=5)
 
 tasks_listbox = Listbox(root, width=50)
