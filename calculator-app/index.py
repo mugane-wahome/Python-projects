@@ -20,7 +20,7 @@ root.geometry("400x500")
 root.title("Calculator")
 
 entry = Entry(root, font="Arial 20")
-entry.pack(fill=X, ipadx=8, pady=10, padx=10)
+entry.grid(row=0, column=0, columnspan=4, ipadx=8, pady=10, padx=10)
 
 buttons = [
     "7", "8", "9", "/",
